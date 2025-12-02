@@ -5,9 +5,12 @@ import MainContent from "./Components/MainContent";
 import WelcomeMessage from "./Components/WelcomeMessage";
 import Greeting from "./Components/Greeting";
 import { useState } from "react";
+import ProductInfo from "./Components/ProductInfo";
+import Lists from "./Components/Lists";
 
 function App() {
   const [showGreeting, setShowGreeting] = useState(false);
+  const [showProductInfo, setShowProductInfo] = useState(false);
 
   return (
     <>
@@ -18,7 +21,11 @@ function App() {
       <Footer />
       <button onClick={() => setShowGreeting(!showGreeting)}>Greeting</button>
       {showGreeting && <Greeting />}
+
+      <button onClick={() => setShowProductInfo(!showProductInfo)}>Product Info</button>
+      {showProductInfo && <ProductInfo />}
+      <Lists />
     </>
   )
 }
-export default App;
+export default App; 
