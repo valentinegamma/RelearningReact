@@ -7,6 +7,7 @@ import Greeting from "./Components/Greeting";
 import { useState } from "react";
 import ProductInfo from "./Components/ProductInfo";
 import Lists from "./Components/Lists";
+import UserData from "./Components/UserData";
 
 function App() {
   const [showGreeting, setShowGreeting] = useState(false);
@@ -25,6 +26,14 @@ function App() {
       <button onClick={() => setShowProductInfo(!showProductInfo)}>Product Info</button>
       {showProductInfo && <ProductInfo />}
       <Lists />
+
+    {UserData.map((user, index) => (
+      <ul key={index}>
+        <li>{user.id}</li>
+        <li>{user.name}</li>
+        <li>{user.age}</li>
+      </ul>
+    ))}
     </>
   )
 }
