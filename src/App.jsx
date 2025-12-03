@@ -8,6 +8,8 @@ import { useState } from "react";
 import ProductInfo from "./Components/ProductInfo";
 import Lists from "./Components/Lists";
 import UserData from "./Components/UserData";
+import Products from "./Components/Products";
+import Person from "./Components/Person";
 
 function App() {
   const [showGreeting, setShowGreeting] = useState(false);
@@ -34,6 +36,15 @@ function App() {
         <li>{user.age}</li>
       </ul>
     ))}
+
+    <Products 
+      name = "Macbook"
+      price = {1200}
+    />
+    <Person 
+      name = 'Valentine Gamma'
+      age = {22}
+    />
     </>
   )
 }
