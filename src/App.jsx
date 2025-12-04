@@ -10,6 +10,7 @@ import Lists from "./Components/Lists";
 import UserData from "./Components/UserData";
 import Products from "./Components/Products";
 import Person from "./Components/Person";
+import Weather from "./Components/weather";
 
 function App() {
   const [showGreeting, setShowGreeting] = useState(false);
@@ -45,6 +46,7 @@ function App() {
       name = 'Valentine Gamma'
       age = {22}
     />
+    <Weather temprature={16}/>
     </>
   )
 }
