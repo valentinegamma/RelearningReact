@@ -16,6 +16,22 @@ npm run build
 npm run preview
 ```
 
+## Pages
+
+- `index.html` is the home page.
+- `team.html` is the team directory and contact page.
+- These are separate Vite HTML entry points, not client-side routes. Add future
+  dedicated pages as HTML entry points and link to them from the shared header.
+
+## Color Palette
+
+| Color | Hex | Preview |
+|-------|-----|---------|
+| Dark Navy | `#001F3F` | ![#001F3F](https://via.placeholder.com/20/001F3F/001F3F) |
+| Deep Blue | `#083358` | ![#083358](https://via.placeholder.com/20/083358/083358) |
+| Bright Blue | `#0D63A5` | ![#0D63A5](https://via.placeholder.com/20/0D63A5/0D63A5) |
+| Golden Yellow | `#FFD717` | ![#FFD717](https://via.placeholder.com/20/FFD717/FFD717) |
+
 ## Stack notes
 
 - Tailwind CSS is integrated through the Vite plugin and `src/index.css`.
