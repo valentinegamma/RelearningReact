@@ -43,7 +43,7 @@ function Hero() {
           </div>
           <div className="hero-art__cards">
             <article className="learning-card">
-              <span className="learning-card__icon learning-card__icon--yellow" aria-hidden="true">
+              <span className="learning-card__icon" aria-hidden="true">
                 <BriefcaseBusiness size={21} />
               </span>
               <span>
@@ -53,7 +53,7 @@ function Hero() {
               <ArrowRight className="learning-card__arrow" size={18} aria-hidden="true" />
             </article>
             <article className="learning-card">
-              <span className="learning-card__icon learning-card__icon--blue" aria-hidden="true">
+              <span className="learning-card__icon" aria-hidden="true">
                 <BookOpen size={21} />
               </span>
               <span>

@@ -3,7 +3,7 @@ import { HeartHandshake, Lightbulb, ShieldCheck, Sprout, UsersRound } from "luci
 const values = [
   {
     title: "Empowerment",
-    description: "We believe in the untapped potential of every person.",
+    description: "We believe in the untapped potential of middle age and young person.",
     icon: Sprout,
   },
   {
@@ -13,12 +13,14 @@ const values = [
   },
   {
     title: "Innovation",
-    description: "We champion forward-thinking solutions and mindsets.",
+    description:
+      "We equip youth, individual and business owners, with forward-thinking solutions and mindsets.",
     icon: Lightbulb,
   },
   {
     title: "Inclusivity",
-    description: "We work to make growth accessible to diverse communities.",
+    description:
+      "We serve all youth, individual and businesses, including marginalized and special groups.",
     icon: UsersRound,
   },
   {
@@ -32,38 +34,37 @@ function MissionVisionValues() {
   return (
     <section className="purpose" id="mission-vision-values" aria-labelledby="purpose-title">
       <div className="purpose__inner">
-        <header className="purpose__intro">
-          <p className="purpose__eyebrow">What guides us</p>
-          <h2 className="purpose__title" id="purpose-title">
-            Purpose that moves <span>us forward.</span>
-          </h2>
-          <p className="purpose__description">
-            We are working toward a future where people and organizations across Africa can realize
-            their potential and thrive.
-          </p>
-        </header>
+        <div className="purpose__layout">
+          <header className="purpose__intro">
+            <h2 className="purpose__title" id="purpose-title">
+              Our purpose:<br /> moving us <span>forward.</span>
+            </h2>
+            <p className="purpose__description">
+              The future we are working toward, and the work that will take us there.
+            </p>
+          </header>
 
-        <div className="purpose__statements">
-          <article className="purpose-statement purpose-statement--mission">
-            <p className="purpose-statement__label">Our mission</p>
-            <p className="purpose-statement__text">
-              To equip youth, individuals, and organizations with the mindset, skills, and strategies
-              necessary to realize their potential and thrive in a dynamic, competitive world.
-            </p>
-          </article>
-          <article className="purpose-statement purpose-statement--vision">
-            <p className="purpose-statement__label">Our vision</p>
-            <p className="purpose-statement__text">
-              To be a leading catalyst for personal and business success across Africa and beyond
-              through innovative training and mentorship.
-            </p>
-          </article>
+          <div className="purpose__statements">
+            <article className="purpose-statement purpose-statement--vision">
+              <p className="purpose-statement__label">Vision</p>
+              <p className="purpose-statement__text">
+                To be a leading catalyst for personal and business success across Africa and beyond
+                through innovative training and mentorship.
+              </p>
+            </article>
+            <article className="purpose-statement purpose-statement--mission">
+              <p className="purpose-statement__label">Mission</p>
+              <p className="purpose-statement__text">
+                To equip youth, individuals, and organizations with the mindset, skills, and strategies
+                necessary to realize their potential and thrive in a dynamic, competitive world.
+              </p>
+            </article>
+          </div>
         </div>
 
         <div className="values">
           <div className="values__intro">
-            <p className="values__eyebrow">The principles behind our work</p>
-            <h3 className="values__title">Our values</h3>
+            <h3 className="values__title">The values that guide our work</h3>
           </div>
           <ul className="values__list">
             {values.map(({ title, description, icon: Icon }) => (
