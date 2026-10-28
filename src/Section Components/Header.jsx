@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowDown, ArrowUpRight, GraduationCap, Menu, X } from "lucide-react"
 
 const links = [
@@ -20,11 +20,54 @@ const aboutLinks = [
 function Header({ currentPage = "home" }) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [aboutOpen, setAboutOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
+
+  useEffect(() => {
+    if (currentPage !== "home") return undefined
+
+    const sectionIds = [...links, ...aboutLinks]
+      .filter(({ href }) => href?.includes("#"))
+      .map(({ href }) => href.split("#")[1])
+
+    function updateActiveSection() {
+      const header = document.querySelector(".site-header")
+      if (!header) return
+
+      const activationLine = header.getBoundingClientRect().bottom + 24
+      let currentSection = sectionIds[0]
+      let currentTop = Number.NEGATIVE_INFINITY
+
+      sectionIds.forEach((id) => {
+        const section = document.getElementById(id)
+        const top = section?.getBoundingClientRect().top
+
+        if (top !== undefined && top <= activationLine && top > currentTop) {
+          currentSection = id
+          currentTop = top
+        }
+      })
+
+      setActiveSection(currentSection)
+    }
+
+    updateActiveSection()
+    window.addEventListener("scroll", updateActiveSection, { passive: true })
+    window.addEventListener("resize", updateActiveSection)
+    window.addEventListener("hashchange", updateActiveSection)
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection)
+      window.removeEventListener("resize", updateActiveSection)
+      window.removeEventListener("hashchange", updateActiveSection)
+    }
+  }, [currentPage])
 
   function closeMenu() {
     setMenuOpen(false)
     setAboutOpen(false)
   }
+
+  const aboutActive = aboutLinks.some(({ href }) => href.split("#")[1] === activeSection)
 
   return (
     <header className="site-header">
@@ -61,46 +104,60 @@ function Header({ currentPage = "home" }) {
           aria-label="Main navigation"
         >
           <div className="site-nav__links">
-            {links.map(({ label, href, page, dropdown }) =>
-              dropdown ? (
-                <div
-                  className={`about-dropdown${aboutOpen ? " about-dropdown--open" : ""}`}
-                  key={label}
-                >
-                  <button
-                    className="site-nav__link about-dropdown__toggle"
-                    type="button"
-                    aria-expanded={aboutOpen}
-                    aria-controls="about-submenu"
-                    onClick={() => setAboutOpen((isOpen) => !isOpen)}
+            {links.map(({ label, href, page, dropdown }) => {
+              if (dropdown) {
+                return (
+                  <div
+                    className={`about-dropdown${aboutOpen ? " about-dropdown--open" : ""}`}
+                    key={label}
                   >
-                    About us <ArrowDown size={14} aria-hidden="true" />
-                  </button>
-                  <div className="about-dropdown__menu" id="about-submenu">
-                    {aboutLinks.map(({ label: aboutLabel, href: aboutHref }) => (
-                      <a
-                        className="about-dropdown__link"
-                        href={aboutHref}
-                        key={aboutLabel}
-                        onClick={closeMenu}
-                      >
-                        {aboutLabel}
-                      </a>
-                    ))}
+                    <button
+                      className={`site-nav__link about-dropdown__toggle${aboutActive ? " site-nav__link--active" : ""}`}
+                      type="button"
+                      aria-expanded={aboutOpen}
+                      aria-controls="about-submenu"
+                      aria-current={aboutActive ? "location" : undefined}
+                      onClick={() => setAboutOpen((isOpen) => !isOpen)}
+                    >
+                      About us <ArrowDown size={14} aria-hidden="true" />
+                    </button>
+                    <div className="about-dropdown__menu" id="about-submenu">
+                      {aboutLinks.map(({ label: aboutLabel, href: aboutHref }) => {
+                        const isActive = aboutHref.split("#")[1] === activeSection
+
+                        return (
+                          <a
+                            className={`about-dropdown__link${isActive ? " about-dropdown__link--active" : ""}`}
+                            href={aboutHref}
+                            key={aboutLabel}
+                            aria-current={isActive ? "location" : undefined}
+                            onClick={closeMenu}
+                          >
+                            {aboutLabel}
+                          </a>
+                        )
+                      })}
+                    </div>
                   </div>
-                </div>
-              ) : (
+                )
+              }
+
+              const isPageActive = currentPage === "team" && page === currentPage
+              const isSectionActive =
+                currentPage === "home" && href?.split("#")[1] === activeSection
+
+              return (
                 <a
-                  className="site-nav__link"
+                  className={`site-nav__link${isPageActive || isSectionActive ? " site-nav__link--active" : ""}`}
                   href={href}
                   key={label}
-                  aria-current={page === currentPage ? "page" : undefined}
+                  aria-current={isPageActive ? "page" : isSectionActive ? "location" : undefined}
                   onClick={closeMenu}
                 >
                   {label}
                 </a>
-              ),
-            )}
+              )
+            })}
           </div>
           <a className="site-header__cta" href="./index.html#programs" onClick={closeMenu}>
             Get started <ArrowUpRight size={16} aria-hidden="true" />

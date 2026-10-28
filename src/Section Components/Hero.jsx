@@ -5,10 +5,6 @@ function Hero() {
     <section className="hero" id="home" aria-labelledby="hero-title">
       <div className="hero__inner">
         <div className="hero__content">
-          <p className="hero__eyebrow">
-            <span className="hero__eyebrow-mark" aria-hidden="true" />
-            Skills for what comes next
-          </p>
           <h1 className="hero__title" id="hero-title">
             Learn boldly.
             <br />
@@ -18,11 +14,8 @@ function Hero() {
             Develop practical skills, discover new possibilities, and shape a future you can be proud of.
           </p>
           <div className="hero__actions">
-            <a className="hero__primary-action" href="#learning-paths">
-              Explore learning paths <ArrowRight size={18} aria-hidden="true" />
-            </a>
-            <a className="hero__text-action" href="#our-approach">
-              Discover our approach
+            <a className="hero__primary-action" href="#our-approach">  Discover our approach <ArrowRight size={18} aria-hidden="true" />
+             
             </a>
           </div>
           <p className="hero__note">

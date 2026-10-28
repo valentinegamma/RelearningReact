@@ -23,6 +23,32 @@ npm run preview
 - These are separate Vite HTML entry points, not client-side routes. Add future
   dedicated pages as HTML entry points and link to them from the shared header.
 
+## Planned: Program Application Form
+
+The **Get started** navigation action is planned to lead to a dedicated
+application page rather than the programs section or a third-party form. The
+page will let prospective participants share what program or service they are
+interested in and what they hope to do.
+
+The planned submission flow is:
+
+1. Collect only the details needed to follow up: contact information, program
+   or service of interest, goals, preferred timing or delivery format, and
+   optional notes.
+2. Submit the form to a secure backend that validates the input and stores the
+   application in a Supabase database.
+3. Notify the administrator by email when a new application is received, using
+   an email service such as Resend. The database is the durable record; email
+   serves as a notification.
+
+Implementation requirements:
+
+- Keep database and email-service credentials on the server; never expose them
+  in the browser.
+- Add input validation, spam protection, and a clear privacy notice.
+- Consider a separate secure administrator dashboard for reviewing and
+  managing applications as a later enhancement.
+
 ## Color Palette
 
 | Color | Hex | Preview |

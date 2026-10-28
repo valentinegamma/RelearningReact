@@ -24,18 +24,20 @@ const impactMetrics = [
 function OurImpact() {
   return (
     <section className="impact" id="our-impact" aria-labelledby="impact-title">
-      <div className="impact__inner">
+      <h3 className="mb-20 text-center text-2xl font-extralight tracking-[0.16em] text-emerald-700 sm:mb-8" style={{ color: "var(--color-page)" }}>
+        Progress worth sharing
+      </h3>
+      <div className="impact__inner">         
+
         <header className="impact__intro">
-          <p className="impact__eyebrow">Progress worth sharing</p>
           <h2 className="impact__title" id="impact-title">
-            Growing potential. <span>Creating impact.</span>
+            growing potential. <span>creating impact.</span>
           </h2>
           <p className="impact__description">
             Every number represents people and partnerships moving toward a more confident,
             capable future.
           </p>
         </header>
-
         <div className="impact__metrics">
           {impactMetrics.map(({ value, label, context, icon: Icon }) => (
             <article className="impact-metric" key={label}>
@@ -49,10 +51,7 @@ function OurImpact() {
           ))}
         </div>
 
-        <p className="impact__source-note">
-          Figures reported in the 2025 PASDC company profile; confirm current totals before
-          publication as current results.
-        </p>
+
       </div>
     </section>
   )
