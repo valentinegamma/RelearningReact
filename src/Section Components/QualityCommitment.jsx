@@ -1,29 +1,57 @@
-import { BadgeCheck, ClipboardCheck, MessageCircleMore, RefreshCw } from "lucide-react"
-
-const commitments = [
+const qualityStandards = [
   {
-    title: "Start with your needs",
-    description:
-      "We listen, assess your goals, and tailor training to your learners and organization.",
-    icon: MessageCircleMore,
+    title: "Customer Service Commitment",
+    introduction: "We are committed to:",
+    points: [
+      "Client-Centered Approach: Understanding your specific training needs and customizing solutions accordingly.",
+      "Professionalism: Treating every client with respect, integrity, and courtesy at all times.",
+      "Responsiveness: Providing timely communication, prompt support, and follow-up on inquiries and feedback.",
+      "Transparency: Offering clear and honest information about our services, pricing, timelines, and results.",
+      "Accessibility: Ensuring our services are accessible and inclusive to all participants, regardless of background.",
+    ],
   },
   {
-    title: "Deliver practical learning",
-    description:
-      "Qualified trainers provide relevant, engaging sessions in a safe and respectful environment.",
-    icon: BadgeCheck,
+    title: "Training Delivery Standards",
+    introduction: "We promise to:",
+    points: [
+      "Deliver engaging, relevant, and practical training content aligned with client objectives.",
+      "Use qualified, experienced, and certified trainers for all programs.",
+      "Employ diverse delivery methods (in-person, virtual, hybrid) to suit client preferences.",
+      "Create a positive, safe, and respectful learning environment for all participants.",
+      "Continuously improve our content and methodology to reflect emerging trends and client feedback.",
+    ],
   },
   {
-    title: "Measure what matters",
-    description:
-      "Needs assessments and post-training evaluations help track outcomes and training effectiveness.",
-    icon: ClipboardCheck,
+    title: "Quality Assurance Measures",
+    introduction: "To ensure quality, we:",
+    points: [
+      "Conduct pre-training needs assessments and post-training evaluations.",
+      "Monitor trainer performance through participant feedback and internal reviews.",
+      "Maintain up-to-date training materials aligned with industry standards and best practices.",
+      "Implement a continuous improvement system using data and client input.",
+      "Schedule regular internal audits and staff development to uphold service excellence.",
+    ],
   },
   {
-    title: "Keep improving",
-    description:
-      "We welcome feedback, review our methods, and use what we learn to improve future programs.",
-    icon: RefreshCw,
+    title: "Client Feedback & Complaints Handling",
+    introduction: "We value your input and commit to:",
+    points: [
+      "Encouraging open feedback from clients and trainees at every stage.",
+      "Addressing concerns or complaints within 3 business days.",
+      "Investigating issues fairly and taking corrective actions promptly.",
+      "Using feedback to shape service improvements and training innovation.",
+    ],
+  },
+  {
+    title: "Performance Indicators",
+    introduction: "We monitor success based on:",
+    points: [
+      "Client satisfaction rates (target: 90%+ satisfaction score)",
+      "Participant learning outcomes and retention",
+      "Training effectiveness (pre/post-assessments and ROI feedback)",
+      "Timely service delivery and responsiveness",
+      "Repeat business and referrals from satisfied clients",
+    ],
   },
 ]
 
@@ -31,45 +59,46 @@ function QualityCommitment() {
   return (
     <section className="quality" id="quality" aria-labelledby="quality-title">
       <div className="quality__inner">
-        <header className="quality__intro">
-          <p className="quality__eyebrow">Our promise to learners and clients</p>
-          <h2 className="quality__title" id="quality-title">
-            Committed to <span>quality.</span>
-          </h2>
-          <p className="quality__description">
-            From the first conversation to the follow-up, we aim to make every training experience
-            useful, respectful, and focused on your goals.
-          </p>
-        </header>
-
-        <div className="quality__commitments">
-          {commitments.map(({ title, description, icon: Icon }, index) => (
-            <article className="quality-card" key={title}>
-              <span className="quality-card__icon" aria-hidden="true">
-                <Icon size={21} strokeWidth={1.8} />
-              </span>
-              <div>
-                <p className="quality-card__number">0{index + 1}</p>
-                <h3 className="quality-card__title">{title}</h3>
-                <p className="quality-card__description">{description}</p>
-              </div>
-            </article>
-          ))}
+        <div className="quality__top">
+          <header className="quality__intro">
+            <h2 className="quality__title" id="quality-title">
+              Committed to <span>quality.</span>
+            </h2>
+            <p className="quality__description">
+              At Pan African Skill Development Centre, we are dedicated to providing exceptional corporate training services that exceed client expectations. Our Customer Service and Quality Assurance Charter outlines our promise to deliver value-driven, professional, and learner-focused experiences to all our stakeholders.
+            </p>
+            <aside className="quality__standards" aria-label="Client satisfaction target">
+              <p className="quality-standard__value">90%+</p>
+              <p className="quality-standard__label">client satisfaction target</p>
+            </aside>
+          </header>
+          <div
+            className="quality__image-placeholder"
+            role="img"
+            aria-label="Image placeholder"
+          />
         </div>
 
-        <aside className="quality__standards" aria-label="Service standards">
-          <div className="quality-standard">
-            <span className="quality-standard__value">90%+</span>
-            <span className="quality-standard__label">client satisfaction target</span>
-          </div>
-          <p className="quality__feedback">
-            We aim to address client concerns within <strong>3 business days</strong>.
-          </p>
-        </aside>
-
-        <p className="quality__source-note">
-          Service commitments and performance targets are stated in the 2025 PASDC company profile.
-        </p>
+        <div className="quality__commitments">
+          {qualityStandards.map(({ title, introduction, points }) => (
+            <div className="quality-row" key={title}>
+              <div
+                className="quality__image-placeholder"
+                role="img"
+                aria-label={`Image placeholder for ${title}`}
+              />
+              <article className="quality-card">
+                <h3 className="quality-card__title">{title}</h3>
+                <p className="quality-card__introduction">{introduction}</p>
+                <ul className="quality-card__points">
+                  {points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

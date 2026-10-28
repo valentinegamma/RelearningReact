@@ -3,20 +3,45 @@ import { BriefcaseBusiness, Compass, GraduationCap } from "lucide-react"
 const audiences = [
   {
     title: "Youths",
-    description:
-      "Build confidence, discover your purpose, and prepare for the next step into a career or business.",
+    subtitle: "Building Tomorrow’s Leaders Today",
+    lead: "We prepare youth to:",
+    points: [
+      "Develop self-awareness, confidence, and a growth mindset",
+      "Discover their talents, passions, and purpose-driven goals",
+      "Cultivate entrepreneurship, financial literacy, and life skills",
+      "Transition smoothly from school to career or business",
+      "Stay motivated and focused through mentorship and real-life role models",
+    ],
+    impact:
+      "Youth emerge as visionary, self-reliant, and ethically grounded contributors to society and the economy.",
     icon: GraduationCap,
   },
   {
     title: "Individuals",
-    description:
-      "Grow your leadership, communication, and personal effectiveness with practical skills for life and work.",
+    subtitle: "Empowering Personal and Professional Growth",
+    lead: "We equip individuals to:",
+    points: [
+      "Set and achieve meaningful goals in life and career",
+      "Enhance emotional intelligence, communication, and decision-making",
+      "Boost time management, focus, and productivity",
+      "Develop leadership, resilience, and continuous improvement habits",
+    ],
+    impact:
+      "Individuals gain clarity, direction, and confidence to take charge of their lives and succeed in their chosen paths.",
     icon: Compass,
   },
   {
     title: "Businesses",
-    description:
-      "Strengthen teams, develop leaders, and improve performance for sustainable organizational growth.",
+    subtitle: "Enhancing People, Performance, and Profitability",
+    lead: "We support organizations to:",
+    points: [
+      "Build high-performing, purpose-driven teams",
+      "Improve staff engagement, innovation, and leadership capacity",
+      "Align personal development with company goals and culture",
+      "Train staff in strategic thinking, problem-solving, and customer excellence",
+    ],
+    impact:
+      "Businesses experience improved productivity, talent retention, and sustainable growth.",
     icon: BriefcaseBusiness,
   },
 ]
@@ -31,8 +56,7 @@ function WhoWeEmpower() {
               Who we empower
             </h2>
             <p className="audiences__description">
-              Every journey is different. We shape practical training and mentorship around the
-              people and organizations ready to grow.
+              At Pan African Skill Development Centre, we deliver Success-Geared Training Programs that empower youth, individuals, and businesses to unlock their full potential, achieve measurable growth, and thrive in a fast-changing world. Our programs are intentionally designed to instill purpose, enhance performance, and fuel progress at every level — personal, professional, and organizational
             </p>
           </div>
           <aside className="audiences__promise" aria-labelledby="audiences-promise-title">
@@ -51,7 +75,7 @@ function WhoWeEmpower() {
         </header>
 
         <div className="audiences__grid">
-          {audiences.map(({ title, description, icon: Icon }) => (
+          {audiences.map(({ title, subtitle, lead, points, impact, icon: Icon }) => (
             <article className="audience-card" key={title}>
               <div className="audience-card__topline">
                 <span className="audience-card__icon" aria-hidden="true">
@@ -59,7 +83,16 @@ function WhoWeEmpower() {
                 </span>
                 <h3 className="audience-card__title">{title}</h3>
               </div>
-              <p className="audience-card__description">{description}</p>
+              <h4 className="audience-card__subtitle">{subtitle}</h4>
+              <p className="audience-card__lead">{lead}</p>
+              <ul className="audience-card__points">
+                {points.map((point) => (
+                  <li key={point}>{point}</li>
+                ))}
+              </ul>
+              <p className="audience-card__impact">
+                <strong>Impact:</strong> {impact}
+              </p>
             </article>
           ))}
         </div>

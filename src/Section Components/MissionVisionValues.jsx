@@ -72,10 +72,8 @@ function MissionVisionValues() {
                 <span className="value-item__icon" aria-hidden="true">
                   <Icon size={20} strokeWidth={1.8} />
                 </span>
-                <span>
-                  <span className="value-item__title">{title}</span>
-                  <span className="value-item__description">{description}</span>
-                </span>
+                <span className="value-item__title">{title}</span>
+                <span className="value-item__description">{description}</span>
               </li>
             ))}
           </ul>

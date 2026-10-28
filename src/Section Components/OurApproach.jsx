@@ -2,38 +2,28 @@ import { ChartNoAxesCombined, Layers3, SlidersHorizontal, UsersRound, Video } fr
 
 const principles = [
   {
-    number: "01",
-    title: "Whole-person growth",
-    description:
-      "We develop mindset, skillset, and toolset together, helping learning translate into meaningful progress.",
+    title: "Holistic Approach",
+    description: "We combine mindset, skillset, and toolset development.",
     icon: Layers3,
   },
   {
-    number: "02",
-    title: "Designed around you",
-    description:
-      "Programs are tailored to the needs of different ages, roles, industries, and organizations.",
+    title: "Targeted Programs",
+    description: "Tailored for different age groups, roles, and industries.",
     icon: SlidersHorizontal,
   },
   {
-    number: "03",
-    title: "Practical and measurable",
-    description:
-      "Action-oriented learning is supported by clear success indicators and feedback on outcomes.",
+    title: "Practical & Measurable",
+    description: "Action-oriented with clear success indicators.",
     icon: ChartNoAxesCombined,
   },
   {
-    number: "04",
-    title: "Guided by experienced trainers",
-    description:
-      "Industry experience, professional expertise, and mentorship bring each learning experience to life.",
+    title: "Experienced Trainers & Mentors",
+    description: "Industry leaders and certified coaches.",
     icon: UsersRound,
   },
   {
-    number: "05",
-    title: "Flexible ways to learn",
-    description:
-      "Choose onsite, online, or hybrid delivery, with formats such as workshops, boot camps, and retreats.",
+    title: "Flexible Delivery",
+    description: "Onsite, online, hybrid, workshops, boot camps, or retreats.",
     icon: Video,
   },
 ]
@@ -41,9 +31,9 @@ const principles = [
 function OurApproach() {
   return (
     <section className="approach" id="our-approach" aria-labelledby="approach-title">
+      <p className="approach__eyebrow">Our approach to learning</p>
       <div className="approach__inner">
         <header className="approach__intro">
-          <p className="approach__eyebrow">Learning with purpose</p>
           <h2 className="approach__title" id="approach-title">
             More than training. <span>A path to progress.</span>
           </h2>
@@ -53,10 +43,9 @@ function OurApproach() {
           </p>
         </header>
 
-        <ol className="approach__list">
-          {principles.map(({ number, title, description, icon: Icon }) => (
-            <li className="approach-item" key={number}>
-              <span className="approach-item__number">{number}</span>
+        <ul className="approach__list">
+          {principles.map(({ title, description, icon: Icon }) => (
+            <li className="approach-item" key={title}>
               <span className="approach-item__icon" aria-hidden="true">
                 <Icon size={21} strokeWidth={1.8} />
               </span>
@@ -66,7 +55,7 @@ function OurApproach() {
               </div>
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   )
