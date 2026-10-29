@@ -1,8 +1,24 @@
-import { ArrowRight, BookOpen, BriefcaseBusiness, Sparkles } from "lucide-react"
+import { ArrowRight, Sparkles } from "lucide-react"
+import { useState } from "react"
+import heroVideo from "@/lib/VIDEOS/Trainer_gesturing_in_classroom_a4dea208.mp4"
 
 function Hero() {
+  const [videoReady, setVideoReady] = useState(false)
+
   return (
     <section className="hero" id="home" aria-labelledby="hero-title">
+      <video
+        className={`hero__video${videoReady ? " hero__video--ready" : ""}`}
+        src={heroVideo}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+        tabIndex={-1}
+        onCanPlay={() => setVideoReady(true)}
+      />
+      <div className="hero-video-overlay" aria-hidden="true" />
       <div className="hero__inner">
         <div className="hero__content">
           <h1 className="hero__title" id="hero-title">
@@ -18,52 +34,8 @@ function Hero() {
              
             </a>
           </div>
-          <p className="hero__note">
-            <Sparkles size={16} aria-hidden="true" />
-            Learn by doing. Grow by sharing.
-          </p>
         </div>
 
-        <div className="hero-art" id="learning-paths" aria-label="Explore practical learning paths">
-          <div className="hero-art__orbit hero-art__orbit--outer" aria-hidden="true" />
-          <div className="hero-art__orbit hero-art__orbit--inner" aria-hidden="true" />
-          <div className="hero-art__sun" aria-hidden="true" />
-          <div className="hero-art__label">
-            <span>Curiosity into capability</span>
-            <span className="hero-art__index">01 / 02</span>
-          </div>
-          <div className="hero-art__message">
-            <span className="hero-art__message-icon" aria-hidden="true">
-              <Sparkles size={17} />
-            </span>
-            <span>
-              <span className="hero-art__message-kicker">Your next chapter</span>
-              <span className="hero-art__message-title">Starts with a skill.</span>
-            </span>
-          </div>
-          <div className="hero-art__cards">
-            <article className="learning-card">
-              <span className="learning-card__icon" aria-hidden="true">
-                <BriefcaseBusiness size={21} />
-              </span>
-              <span>
-                <span className="learning-card__title">Youth empowerment</span>
-                <span className="learning-card__detail">Mentorship, entrepreneurship, and life skills.</span>
-              </span>
-              <ArrowRight className="learning-card__arrow" size={18} aria-hidden="true" />
-            </article>
-            <article className="learning-card">
-              <span className="learning-card__icon" aria-hidden="true">
-                <BookOpen size={21} />
-              </span>
-              <span>
-                <span className="learning-card__title">Personal success</span>
-                <span className="learning-card__detail">Grow through leadership and practical skills.</span>
-              </span>
-              <ArrowRight className="learning-card__arrow" size={18} aria-hidden="true" />
-            </article>
-          </div>
-        </div>
       </div>
     </section>
   )

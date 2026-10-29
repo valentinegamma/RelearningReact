@@ -1,25 +1,98 @@
+import { useEffect, useRef, useState } from "react"
 import { Handshake, Sprout, Target } from "lucide-react"
 
 const impactMetrics = [
   {
-    value: "1,200+",
+    value: 1200,
+    suffix: "+",
     label: "youth trained",
     context: "Equipped with skills and support for their next steps.",
     icon: Sprout,
   },
   {
-    value: "100+",
+    value: 100,
+    suffix: "+",
     label: "personal success plans",
     context: "Created to help individuals set a clear direction.",
     icon: Target,
   },
   {
-    value: "10",
+    value: 10,
+    suffix: "",
     label: "partner institutions and companies",
     context: "Working together to extend learning and opportunity.",
     icon: Handshake,
   },
 ]
+
+function ImpactMetric({ value, suffix, label, context, icon: Icon }) {
+  const [count, setCount] = useState(0)
+  const cardRef = useRef(null)
+
+  useEffect(() => {
+    const card = cardRef.current
+    if (!card) return
+
+    if (!("IntersectionObserver" in window)) {
+      setCount(value)
+      return
+    }
+
+    let animationFrame
+    let isVisible = false
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          isVisible = true
+          setCount(0)
+
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            setCount(value)
+            return
+          }
+
+          let startTime
+          const animate = (timestamp) => {
+            if (startTime === undefined) startTime = timestamp
+            const progress = Math.min((timestamp - startTime) / 1000, 1)
+            const easedProgress = 1 - (1 - progress) ** 3
+            setCount(Math.round(value * easedProgress))
+
+            if (progress < 1) {
+              animationFrame = requestAnimationFrame(animate)
+            }
+          }
+
+          animationFrame = requestAnimationFrame(animate)
+        } else if (!entry.isIntersecting) {
+          isVisible = false
+          cancelAnimationFrame(animationFrame)
+        }
+      },
+      { threshold: 0.35 },
+    )
+
+    observer.observe(card)
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(animationFrame)
+    }
+  }, [value])
+
+  return (
+    <article className="impact-metric" ref={cardRef}>
+      <span className="impact-metric__icon" aria-hidden="true">
+        <Icon size={22} strokeWidth={1.8} />
+      </span>
+      <p className="impact-metric__value">
+        {new Intl.NumberFormat().format(count)}
+        {suffix}
+      </p>
+      <h3 className="impact-metric__label">{label}</h3>
+      <p className="impact-metric__context">{context}</p>
+    </article>
+  )
+}
 
 function OurImpact() {
   return (
@@ -39,15 +112,8 @@ function OurImpact() {
           </p>
         </header>
         <div className="impact__metrics">
-          {impactMetrics.map(({ value, label, context, icon: Icon }) => (
-            <article className="impact-metric" key={label}>
-              <span className="impact-metric__icon" aria-hidden="true">
-                <Icon size={22} strokeWidth={1.8} />
-              </span>
-              <p className="impact-metric__value">{value}</p>
-              <h3 className="impact-metric__label">{label}</h3>
-              <p className="impact-metric__context">{context}</p>
-            </article>
+          {impactMetrics.map((metric) => (
+            <ImpactMetric {...metric} key={metric.label} />
           ))}
         </div>
 
