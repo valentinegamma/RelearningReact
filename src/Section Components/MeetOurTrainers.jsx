@@ -27,7 +27,7 @@ function MeetOurTrainers() {
       <div className="trainers__inner">
         <header className="trainers__intro">
           <div className="trainers__heading">
-v             <h2 className="trainers__title" id="trainers-title">
+            <h2 className="trainers__title" id="trainers-title">
               Meet the people <span>who guide your growth.</span>
             </h2>
             <p className="trainers__description">

@@ -47,9 +47,8 @@ function ProgramsAndServices() {
       <div className="programs__inner">
         <header className="programs__intro">
           <div>
-            <p className="programs__eyebrow">Practical pathways to progress</p>
             <h2 className="programs__title" id="programs-title">
-              Programs that move you <span>forward.</span>
+              Our <span>programs</span> and <span>services</span> that move you forward.
             </h2>
           </div>
           <p className="programs__description">

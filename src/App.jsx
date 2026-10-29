@@ -9,6 +9,7 @@ import ProgramsAndServices from "@/Section Components/ProgramsAndServices.jsx"
 import OurApproach from "@/Section Components/OurApproach.jsx"
 import PartnerWithUs from "@/Section Components/PartnerWithUs.jsx"
 import ContactAndGetStarted from "@/Section Components/ContactAndGetStarted.jsx"
+import MapPreview from "@/Section Components/MapPreview.jsx"
 import SiteFooter from "@/Section Components/SiteFooter.jsx"
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <OurApproach />
         <PartnerWithUs />
         <ContactAndGetStarted />
+        <MapPreview />
       </main>
       <SiteFooter />
     </>
