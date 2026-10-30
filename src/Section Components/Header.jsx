@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { ArrowDown, ArrowUpRight, GraduationCap, Menu, X } from "lucide-react"
+import { ArrowDown, Menu, X } from "lucide-react"
+import logo from "@/lib/IMAGES/logo.png"
 
 const links = [
   { label: "Home", href: "./index.html#home", page: "home" },
@@ -68,9 +69,10 @@ function Header({ currentPage = "home" }) {
   }
 
   const aboutActive = aboutLinks.some(({ href }) => href.split("#")[1] === activeSection)
+  const isOverHero = currentPage === "home" && activeSection === "home"
 
   return (
-    <header className="site-header">
+    <header className={`site-header${isOverHero ? " site-header--over-hero" : ""}`}>
       <div className="site-header__inner">
         <a
           className="brand"
@@ -79,7 +81,7 @@ function Header({ currentPage = "home" }) {
           onClick={closeMenu}
         >
           <span className="brand__mark" aria-hidden="true">
-            <GraduationCap size={23} strokeWidth={1.8} />
+            <img src={logo} alt="" />
           </span>
           <span className="brand__name">
             <span>Pan African</span>
@@ -159,9 +161,6 @@ function Header({ currentPage = "home" }) {
               )
             })}
           </div>
-          <a className="site-header__cta" href="./index.html#programs" onClick={closeMenu}>
-            Get started <ArrowUpRight size={16} aria-hidden="true" />
-          </a>
         </nav>
       </div>
     </header>

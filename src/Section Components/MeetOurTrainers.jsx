@@ -1,23 +1,26 @@
 import { ArrowRight } from "lucide-react"
+import angelinePhoto from "@/lib/IMAGES/Angeline Njambi Ndeto.png"
+import fredrickPhoto from "@/lib/IMAGES/Fredrick Kavisi Musau.png"
+import josephinePhoto from "@/lib/IMAGES/Josephine Mwikali Musyoka.png"
 
 const featuredTrainers = [
   {
     name: "Angeline Njambi Ndeto",
+    image: angelinePhoto,
     role: "CEO and Lead Trainer",
     expertise: "Leadership, finance, and supply-chain training.",
-    initials: "AN",
   },
   {
     name: "Josephine Mwikali Musyoka",
+    image: josephinePhoto,
     role: "Part-Time Trainer and Marketing Director",
     expertise: "Leadership, team development, and customer service.",
-    initials: "JM",
   },
   {
     name: "Fredrick Kavisi Musau",
+    image: fredrickPhoto,
     role: "Full-Time Trainer · Communication",
     expertise: "Communication, public relations, and interpersonal skills.",
-    initials: "FM",
   },
 ]
 
@@ -38,14 +41,10 @@ function MeetOurTrainers() {
         </header>
 
         <div className="trainers__grid">
-          {featuredTrainers.map(({ name, role, expertise, initials }) => (
+          {featuredTrainers.map(({ name, image, role, expertise }) => (
             <article className="trainer-card" key={name}>
-              <div
-                className="trainer-card__portrait"
-                role="img"
-                aria-label={`Portrait placeholder for ${name}`}
-              >
-                <span className="trainer-card__initials" aria-hidden="true">{initials}</span>
+              <div className="trainer-card__portrait">
+                <img src={image} alt={`${name} portrait`} />
               </div>
               <div className="trainer-card__content">
                 <h3 className="trainer-card__name">{name}</h3>

@@ -1,4 +1,5 @@
-import { ArrowUpRight, GraduationCap, Mail, MapPin, Phone } from "lucide-react"
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react"
+import logo from "@/lib/IMAGES/logo.png"
 
 const footerLinks = [
   { label: "Home", href: "./index.html#home" },
@@ -16,7 +17,7 @@ function SiteFooter() {
         <div className="site-footer__brand">
           <a className="site-footer__logo" href="./index.html#home">
             <span className="site-footer__mark" aria-hidden="true">
-              <GraduationCap size={22} strokeWidth={1.8} />
+              <img src={logo} alt="" />
             </span>
             <span>Pan African Skill Development Centre</span>
           </a>

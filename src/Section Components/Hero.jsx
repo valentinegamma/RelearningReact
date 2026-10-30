@@ -30,8 +30,8 @@ function Hero() {
             Develop practical skills, discover new possibilities, and shape a future you can be proud of.
           </p>
           <div className="hero__actions">
-            <a className="hero__primary-action" href="#our-approach">  Discover our approach <ArrowRight size={18} aria-hidden="true" />
-             
+            <a className="hero__primary-action" href="#programs">
+              Get started <ArrowRight size={18} aria-hidden="true" />
             </a>
           </div>
         </div>
